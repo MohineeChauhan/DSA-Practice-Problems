@@ -73,3 +73,60 @@ class Solution {
          return pre;
     }
 }
+
+<br>
+<h3>check if the linked list has a loop</h3>
+
+
+class Solution {
+    
+    public static boolean detectLoop(Node head){
+        Node slow=head;
+        Node fast=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+<br>
+<h3>remove a loop in the linked list</h3>
+
+
+class Solution
+{
+    
+    public static void removeLoop(Node head){
+        // code here
+        // remove the loop without losing any nodes
+        boolean cycle=false;
+         Node slow=head;
+        Node fast=head;
+        Node pre=null;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            pre=fast.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                cycle=true;
+                break;
+            }
+        }
+        if(cycle){
+            slow=head;
+        
+            while(slow!=fast){
+                slow=slow.next;
+                pre=fast;
+                fast=fast.next;
+            }
+            
+            pre.next=null;
+        }
+    }
+}
