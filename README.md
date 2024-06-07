@@ -1,8 +1,6 @@
 # mohinee
-<br>
 <h3>Reverse Integer</h3>
 class Solution {
-
 
     public int reverse(int x) {
         int r1=0,rev=0;
@@ -18,12 +16,8 @@ class Solution {
         return rev;
     }
 }
-
-<br>
 <h3>Double a Number Represented as a Linked List</h3>
-
 class Solution {
-
 
     public ListNode doubleIt(ListNode head) {
            
@@ -73,11 +67,7 @@ class Solution {
          return pre;
     }
 }
-
-<br>
 <h3>check if the linked list has a loop</h3>
-
-
 class Solution {
     
     public static boolean detectLoop(Node head){
@@ -93,11 +83,7 @@ class Solution {
         return false;
     }
 }
-
-<br>
 <h3>remove a loop in the linked list</h3>
-
-
 class Solution
 {
     
@@ -128,5 +114,26 @@ class Solution
             
             pre.next=null;
         }
+    }
+}
+<h3>Kadane's Algorithm</h3>
+class Solution{
+
+    // arr: input array
+    // n: size of array
+    //Function to find the sum of contiguous subarray with maximum sum
+    
+    long maxSubarraySum(int arr[], int n){
+        
+        long sum=0;
+        long maxsum=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+             sum += arr[i];
+             maxsum=Math.max(maxsum,sum);
+            if(sum<0){
+                sum=0;
+            }
+        }
+        return maxsum;
     }
 }
