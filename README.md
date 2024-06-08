@@ -137,3 +137,28 @@ class Solution{
         return maxsum;
     }
 }
+
+<h3>Index of an extra element</h3>
+class Solution {
+
+    public int findExtra(int n, int arr1[], int arr2[]) {
+        
+        int low=0,high=n-1;
+        while(low<high){
+            int mid=(low+high)/2;
+            
+            if(arr1[mid]==arr2[mid]){
+                low=mid+1;
+            }
+            else if(arr1[mid]<arr2[mid]){    
+                if(mid>0 && arr1[mid]==arr2[mid-1]){
+                     high=mid-1;
+                }
+                else {
+                    return mid;
+                }
+            }
+        }
+        return low;
+    }
+}
