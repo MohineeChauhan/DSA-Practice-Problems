@@ -162,3 +162,33 @@ class Solution {
         return low;
     }
 }
+
+<h3>Height checker</h3>
+class Solution {
+
+    public int heightChecker(int[] heights) {
+        int n=heights.length;
+        int ans[]=new int[n];
+        int arr[]=new int[100];
+        for(int i=0;i<n;i++){
+            arr[heights[i]-1] +=1;
+        }
+         for(int i=0,j=0;j<n;){
+            if(arr[i]>0){
+                ans[j]=i+1;
+                arr[i] -=1;
+                j++;
+            }
+            else{
+                i++;
+            }
+        }
+        int count=0;
+         for(int i=0;i<n;i++){
+            if(ans[i]!=heights[i]){
+                count++;
+            }
+        }
+        return count;
+    }
+}
