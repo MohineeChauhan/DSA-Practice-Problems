@@ -192,3 +192,34 @@ class Solution {
         return count;
     }
 }
+
+<h3>Sort an array of 0s,1s and 2s</h3>
+class Solution {
+
+    public void sortColors(int[] nums) {
+      int n=nums.length;
+      int low=0;
+      int mid=0;
+      int high=n;
+      int temp;
+      while(mid<high){
+          if(nums[mid]==2){
+            high--;
+            temp=nums[high];
+            nums[high]=nums[mid];
+            nums[mid]=temp;
+            
+        }
+        else if(nums[mid]==0){
+             temp=nums[mid];
+            nums[mid]=nums[low];
+            nums[low]=temp;
+            low++;
+            mid++;
+        }
+        else{           
+            mid++;
+        }
+      }
+    }
+}
