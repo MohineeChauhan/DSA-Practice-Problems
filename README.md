@@ -287,3 +287,23 @@
              return (int)curr;
         }  
     }
+
+<h3>Minimum Increment to Make Array Unique</h3>
+
+    class Solution {
+    
+        public int minIncrementForUnique(int[] nums) {
+            Arrays.sort(nums);
+            int count=0;
+            for(int i=0;i<nums.length-1;i++){
+                int incre=0;
+                incre = nums[i]-nums[i+1]+1;
+            
+                if(incre>=0){
+                    nums[i+1] += incre;
+                    count +=incre;
+                }
+            }
+            return count;
+        }
+    }
