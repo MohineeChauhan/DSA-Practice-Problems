@@ -307,3 +307,48 @@
             return count;
         }
     }
+
+<h3>Mobile Numeric Keypad</h3>
+
+    class Solution {
+    
+        public long getCount(int n) {
+            if (n == 1) {
+                return 10; 
+            }
+            List<int[]> moves = new ArrayList<>();
+
+            moves.add(new int[]{0, 8});
+            moves.add(new int[]{1, 2, 4}); 
+            moves.add(new int[]{2, 1, 3, 5}); 
+            moves.add(new int[]{3, 2, 6}); 
+            moves.add(new int[]{4, 1, 5, 7});
+            moves.add(new int[]{5, 2, 4, 6, 8}); 
+            moves.add(new int[]{6, 3, 5, 9}); 
+            moves.add(new int[]{7, 4, 8}); 
+            moves.add(new int[]{8, 5, 7, 9, 0});
+            moves.add(new int[]{9, 6, 8}); 
+
+            long[][] dp = new long[n][10];
+
+            for (int i = 0; i <= 9; i++) {
+                dp[0][i] = 1;
+            }
+
+            for (int len = 2; len <= n; len++) {
+                for (int key = 0; key <= 9; key++) {
+                    dp[len-1][key] = 0;
+                    for (int nextKey : moves.get(key)) {
+                        dp[len-1][key] += dp[len - 2][nextKey];
+                    }
+                }
+            }
+
+            long totalSequences = 0;
+            for (int i = 0; i <= 9; i++) {
+                totalSequences += dp[n-1][i];
+            }
+
+            return totalSequences;        
+        }
+    }
