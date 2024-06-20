@@ -352,3 +352,35 @@
             return totalSequences;        
         }
     }
+
+<h3>Majority Elemment</h3>
+
+    class Solution {
+    
+        static int majorityElement(int a[], int size) {
+            int e=-1;
+            int count=0;
+            for(int i=0;i<size;i++){
+                if(count==0){
+                    e=a[i];
+                    count++;
+                }
+                else if(a[i]==e){
+                    count++;
+                }
+                else{
+                    count--;
+                }   
+            }
+            count=0;
+            for(int i=0;i<size;i++){
+                if(a[i]==e){
+                    count++;
+                }
+            }
+            if(count>size/2){
+                return e;
+            }
+            return -1;
+        }
+    }
