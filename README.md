@@ -384,3 +384,40 @@
             return -1;
         }
     }
+
+<h3>Equilibrium Point</h3>
+
+    class Solution {
+
+        public static int equilibriumPoint(long arr[], int n) {
+        
+            long suml=arr[0];
+            long sumr=arr[n-1];
+            int i=0;
+            int j=n-1;
+            while(i<j){
+                if(suml>sumr){
+                    j--;
+                    sumr=sumr+arr[j];
+                }
+                else if(suml<sumr){
+                    i++;
+                    suml=suml+arr[i];
+                }
+                else{
+                    i++;
+                    j--;
+                    suml=suml+arr[i];
+                    sumr=sumr+arr[j];
+                }
+            }
+            if(suml==sumr){
+                return i+1;
+            }
+            return -1;
+        }
+    }
+
+
+
+    
