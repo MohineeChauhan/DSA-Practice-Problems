@@ -456,4 +456,36 @@
         }    
     }
 
-    
+<h3>Grumpy Bookstore Owner</h3>    
+
+    class Solution {
+        public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {
+            
+            int n=customers.length;
+            int total=0;
+            int max=0;
+            for(int i=0;i<n;i++){
+                if(grumpy[i]==0){
+                    total +=customers[i];
+                }
+            }
+            int ans=total;
+            int count=0;
+        
+            for(int i=0,j=0;i<n;i++){
+                count++;
+                if(grumpy[i]==1){
+                    ans +=customers[i];
+                }
+                if(count==minutes){
+                    max=Math.max(ans,max);
+                    if(grumpy[j]==1){
+                        ans -=customers[j];
+                    }
+                    j++;
+                    count--;
+                } 
+            }
+            return max;
+        }
+    }
