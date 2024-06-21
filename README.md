@@ -1,4 +1,4 @@
-# mohinee
+# Leetcode & GeeksforGeeks
 <h3>Reverse Integer</h3>
 
     class Solution {
