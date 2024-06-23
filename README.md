@@ -489,3 +489,44 @@
             return max;
         }
     }
+
+<h3>Find the Minimum Area to Cover All Ones 1</h3>
+
+    class Solution {
+        
+        public int minimumArea(int[][] grid) {
+            int n=grid.length;
+            int m=grid[0].length;
+            int lft=m;
+            int rgt=0;
+            int up=n;
+            int dwn=0;
+        
+            for(int i=0;i<n;i++){
+                if(lft==1 && rgt==m){
+                    break;
+                }
+                for(int j=0;j<m;j++){
+                    if(grid[i][j]==1){
+                        lft=Math.min(lft,j+1);
+                        rgt=Math.max(rgt,j+1);
+                    }
+                }   
+            }
+             for(int i=0;i<m;i++){
+                 if(up==1 && dwn==n){
+                    break;
+                }
+                for(int j=0;j<n;j++){
+                    if(grid[j][i]==1){
+                        up=Math.min(up,j+1);
+                        dwn=Math.max(dwn,j+1);
+                    }
+                }
+            }
+        
+            int l=dwn-up+1;
+            int w=rgt-lft+1;
+            return l*w;
+        }
+    }
