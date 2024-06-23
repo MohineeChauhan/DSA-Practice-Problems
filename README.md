@@ -490,7 +490,7 @@
         }
     }
 
-<h3>Find the Minimum Area to Cover All Ones 1</h3>
+<h3>Find the Minimum Area to Cover All Ones</h3>
 
     class Solution {
         
@@ -528,5 +528,29 @@
             int l=dwn-up+1;
             int w=rgt-lft+1;
             return l*w;
+        }
+    }
+
+<h3>Minimum Operations to Make Binary Array Elements Equal to One </h3>
+
+    class Solution {
+        public int minOperations(int[] nums) {
+        
+            int count=0;
+            for(int i=0;i<nums.length;i++){
+                if(nums[i]==0 && i<nums.length-2){
+                     count++;
+                     nums[i]=1^nums[i];
+                     nums[i+1]=1^nums[i+1];
+                     nums[i+2]=1^nums[i+2];
+                 }
+            }   
+        
+            for(int i=0;i<nums.length;i++){
+                if(nums[i]==0){
+                    return -1;
+                }
+            }
+            return count;
         }
     }
