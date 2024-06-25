@@ -554,3 +554,29 @@
             return count;
         }
     }
+
+<h3>Left Rotate Matrix K Times</h3>
+
+    class Solution {
+    
+        int[][] rotateMatrix(int k, int mat[][]) {
+        // code here
+            k=k%mat[0].length;
+            rotate(0,k-1,mat);
+            rotate(k,mat[0].length-1,mat);
+            rotate(0,mat[0].length-1,mat);
+            return mat;
+        }
+    
+        void rotate(int s,int e,int[][] mat){
+            while(s<e){
+                for(int i=0;i<mat.length;i++){
+                    int temp=mat[i][s];
+                    mat[i][s]=mat[i][e];
+                    mat[i][e]=temp;
+                }
+                s++;
+                e--;
+            }
+        }
+    }
