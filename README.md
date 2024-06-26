@@ -625,3 +625,31 @@
             return mainlist; 
         }
     }
+
+<h3>Merge Intervals</h3>
+
+    class Solution {
+    
+    public int[][] merge(int[][] intervals) {
+
+        Arrays.sort(intervals,Comparator.comparingDouble(o->o[0]));
+        int n=intervals.length;
+        List<int[]> ans=new ArrayList<>();
+
+        ans.add(intervals[0]);
+        for(int i=1;i<n;i++){
+            int end=ans.get(ans.size()-1)[1];
+            if(intervals[i][0]<=end){
+                ans.get(ans.size()-1)[1]=Math.max(intervals[i][1],end);
+            }
+            else{
+                ans.add(intervals[i]);
+            }
+        }
+        int arr[][]=new int[ans.size()][2];
+        for(int i=0;i<ans.size();i++){
+                arr[i]=ans.get(i);
+        }
+        return arr;
+    }
+    }
