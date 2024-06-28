@@ -733,3 +733,62 @@
         return ans;
     }
     }
+
+<h3>Count Inversions</h3>
+
+    class Solution {
+    
+    // arr[]: Input Array
+    // N : Size of the Array arr[]
+    // Function to count inversions in the array.
+    static long inversionCount(long arr[], int n) {
+        // Your Code Here
+        return merge(0,n-1,arr);
+    }
+    
+    static long merge(int start,int end,long arr[]){
+        long count=0;
+        if(start<end){
+            int mid=start+(end-start)/2;
+            count += merge(start,mid,arr);
+            count += merge(mid+1,end,arr);
+            count += merging(start,mid,end,arr);
+        }
+        return count;
+    }
+    
+    static long merging(int start,int mid,int end,long arr[]){
+        int left=start;
+        int rgt=mid+1;
+        long count=0;
+        ArrayList<Long> a=new ArrayList<>();
+
+        while(left<=mid && rgt<=end){
+            
+            if(arr[left]>arr[rgt]){
+               a.add(arr[rgt]);
+                rgt++;
+                count +=mid-left+1;
+            }
+            else{
+               a.add(arr[left]);
+               left++;
+            }
+        }
+        
+        while(left<=mid ){
+            a.add(arr[left]);
+            left++;
+            // count +=mid-left+1;
+        }
+        while(rgt<=end){
+            a.add(arr[rgt]);
+              rgt++;
+        }
+        
+        for(int i=0;i<a.size();i++){
+            arr[i+start]=a.get(i);
+        }
+        return count;
+    }
+    }
