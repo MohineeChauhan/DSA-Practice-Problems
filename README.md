@@ -820,3 +820,34 @@
         return ans;
     }
     }
+
+<h3>Merge Nodes in Between Zeros</h3>
+
+    class Solution {
+
+    public ListNode mergeNodes(ListNode head) {
+        ListNode start=head.next;
+        ListNode ptr=head;
+        int sum=0;
+        while(start!=null){
+            if(start.val!=0){
+                sum +=start.val;
+                start=start.next;
+            }
+            else{
+                ptr.val=sum;
+                if(start.next!=null){
+                    ptr=ptr.next;
+                }
+                else{
+                    ptr.next=null;
+                }
+                sum=0;
+                start=start.next;
+            }
+        }
+        return head;
+    }
+    }
+
+
