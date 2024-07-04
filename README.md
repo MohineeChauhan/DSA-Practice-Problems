@@ -850,4 +850,32 @@
     }
     }
 
+<h3>Koko Eating Bananas</h3>
 
+    class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        int n=piles.length;
+        int max=piles[0];
+        for(int i=1;i<n;i++){
+            max=Math.max(max,piles[i]);
+        }
+        int low=1;
+        int high=max;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+             
+            double total=0;
+            for(int i=0;i<n;i++){
+                total=total+Math.ceil((double)piles[i]/(double)mid);
+            }
+
+            if(total<=h){
+                high=mid-1;
+            }
+            else{
+                low=mid+1;
+            }
+        }
+        return low;
+    }
+    }
