@@ -1,0 +1,15 @@
+class Solution {
+    public int passThePillow(int n, int time) {
+
+        time =time % (2*(n-1));
+        System.out.println(time+ " ");
+        int pos=0;
+        if(time>=n){
+            pos=n-(time % (n-1));
+        }
+        else{
+            pos=time +1;
+        }
+        return pos;
+    }
+}
