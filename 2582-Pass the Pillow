@@ -1,6 +1,5 @@
 class Solution {
     public int passThePillow(int n, int time) {
-
         time =time % (2*(n-1));
         System.out.println(time+ " ");
         int pos=0;
