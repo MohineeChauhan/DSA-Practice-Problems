@@ -1,0 +1,23 @@
+class Solution {
+    public List<String> validStrings(int n) {
+        List<String> l=new ArrayList<>();
+        String str=new String();
+        
+        generateStr(n,'1',str,l);
+        return l;
+    }
+     public void generateStr(int n,char last,String str,List<String> l) {
+         if(str.length()<n){
+            if(last=='1'){
+                generateStr(n,'0',str+"0",l);
+                generateStr(n,'1',str+"1",l);
+            }
+            else{
+                generateStr(n,'1',str+"1",l);
+            }
+         }
+         else{
+             l.add(str);
+         }
+     }
+}
