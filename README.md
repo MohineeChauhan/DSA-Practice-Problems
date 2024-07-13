@@ -979,3 +979,26 @@
         return 0;
     }
     }
+
+<h3>Subarray with given XOR</h3>
+
+    public class Solution {
+    
+    public int solve(ArrayList<Integer> A, int B) {
+        int count=0;
+        int n=A.size();
+        Map<Integer,Integer> hm=new HashMap<>();
+        hm.put(0,1);
+        int xor=0;
+        for(int i=0;i<n;i++){
+            xor ^=A.get(i);
+            int rem=xor^B;
+            if(hm.containsKey(rem)){
+                count+=hm.get(rem);
+            }
+                hm.put(xor,hm.getOrDefault(xor,0)+1);
+        }
+        return count;
+    }
+    }
+
