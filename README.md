@@ -1002,3 +1002,33 @@
     }
     }
 
+<h3>0 - 1 Knapsack Problem</h3>
+
+    class Solution {
+    
+    //Function to return max value that can be put in knapsack of capacity W.
+    static int knapSack(int W, int wt[], int val[], int n) { 
+         // your code here 
+         int arr[][]=new int[val.length+1][W+1];
+         
+         for(int i=0;i<arr.length;i++){
+            arr[i][0]=0;
+         }
+         
+         for(int j=0;j<arr[0].length;j++){
+            arr[0][j]=0;
+         }
+         
+         for(int i=1;i<arr.length;i++){
+             for(int j=1;j<arr[0].length;j++){
+                if(j>=wt[i-1]){
+                    arr[i][j]=Math.max(val[i-1]+arr[i-1][j-wt[i-1]],arr[i-1][j]);
+                }
+                else{
+                    arr[i][j]=arr[i-1][j];
+                }
+            }
+        }
+        return arr[arr.length-1][arr[0].length-1];
+    } 
+    }
