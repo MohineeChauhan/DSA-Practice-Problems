@@ -1032,3 +1032,28 @@
         return arr[arr.length-1][arr[0].length-1];
     } 
     }
+
+<h3>Reverse a Stack</h3>
+
+    class Solution{
+    
+    static void reverse(Stack<Integer> s){
+    
+        // add your code here
+        if(!s.isEmpty()){
+            int x=s.pop();
+            reverse(s);
+            pushBack(s,x);
+        }
+    }
+    static void pushBack(Stack<Integer> s,int x){
+        if(s.isEmpty()){
+            s.push(x);
+        }
+        else{
+            int temp =s.pop();
+            pushBack(s,x);
+            s.push(temp);
+        }
+    }
+    }
