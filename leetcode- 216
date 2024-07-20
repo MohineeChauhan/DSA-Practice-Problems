@@ -1,0 +1,21 @@
+class Solution {
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> main=new ArrayList<>();
+        int num=1;
+        sum(num,k,n,main,new ArrayList<>());
+        return main;
+    }
+    void sum(int num,int k,int target,List<List<Integer>> main, ArrayList<Integer> l){
+        if(k==0 && target==0){
+            main.add(new ArrayList<>(l));
+            return ;
+        }
+        if(k>0 && num<=9){
+            l.add(num);
+            sum(num+1,k-1,target-num,main,l);
+            l.remove(l.size()-1);
+            sum(num+1,k,target,main,l);
+        }
+        
+    }
+}
