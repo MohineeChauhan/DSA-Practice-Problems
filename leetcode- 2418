@@ -1,0 +1,25 @@
+class Solution {
+    public String[] sortPeople(String[] names, int[] heights) {
+        int n=heights.length;
+        for(int i=0;i<n;i++){
+            int idx=i;
+            int j=i+1;
+            while(j<n){
+                if(heights[idx]<heights[j]){
+                    idx=j;
+                }
+                j++;
+            }
+            if(i!=idx){
+                int temp=heights[i];
+                heights[i]=heights[idx];
+                heights[idx]=temp;
+
+                String tem=names[i];
+                names[i]=names[idx];
+                names[idx]=tem;
+            }
+        }
+        return names;
+    }
+}
