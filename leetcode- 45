@@ -1,0 +1,18 @@
+class Solution {
+    public int jump(int[] nums) {
+        int rgt=0;
+        int lft=0;
+        int count=0;
+        int far=0;
+        while(rgt<nums.length-1){
+            
+            for(int i=lft;i<=rgt;i++){
+                far=Math.max(i+nums[i],far);
+            }
+            lft=rgt+1;
+            rgt=far;
+            count++;
+        }
+        return count;
+    }
+}
